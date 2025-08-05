@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friends Nickname Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      text-align: center;
+      background-color: #f7f2ec;
+    }
+    h1 {
+      color: #d17f4d;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .nickname-output {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #4a4a4a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>☕️ Friends Universe Nickname Generator</h1>
+
+  <input type="text" id="firstNameInput" placeholder="Enter your first name" />
+  <br>
+  <button onclick="generateNickname()">Generate Nickname</button>
+
+  <div class="nickname-output" id="nicknameOutput"></div>
+
+  <script>
+    function generateNickname() {
+      const firstName = document.getElementById("firstNameInput").value.trim();
+
+      if (firstName === "") {
+        document.getElementById("nicknameOutput").textContent = "Please enter your name!";
+        return;
+      }
+
+      const shortName = firstName.length < 4 ? firstName : firstName.slice(0, 4);
+
+      const surnames = ["Geller", "Tribbiani", "Buffay", "Green", "Bing", "Wheeler", "Hannigan"];
+      const randomSurname = surnames[Math.floor(Math.random() * surnames.length)];
+
+      const nickname = `${shortName} ${randomSurname}`;
+
+      document.getElementById("nicknameOutput").textContent = `Your Friends Nickname: ${nickname}`;
+    }
+  </script>
+
+</body>
+</html>
